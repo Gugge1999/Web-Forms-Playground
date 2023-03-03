@@ -1,7 +1,8 @@
-@use "../abstracts/" as *;
-
 .card {
-  display: grid;
-  gap: 1rem;
-  padding: $card-body-padding;
+    display: grid;
+    gap: 1rem;
+}
+
+.hejsan-nuda-cards-2 {
+    color: green;
 }
