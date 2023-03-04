@@ -120,7 +120,6 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
-    <Content Include="Content\output\main.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -175,6 +174,7 @@
       <Link>compilerconfig.json.bindings</Link>
     </None>
     <None Include="compilerconfig.json" />
+    <Content Include="compilerconfig.json.bindings" />
     <None Include="compilerconfig.json.defaults">
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
@@ -264,6 +264,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\output\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -309,6 +310,9 @@
     <Error Condition="!Exists('packages\BuildWebCompiler2022.1.14.10\build\BuildWebCompiler2022.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\BuildWebCompiler2022.1.14.10\build\BuildWebCompiler2022.targets'))" />
   </Target>
   <Import Project="packages\BuildWebCompiler2022.1.14.10\build\BuildWebCompiler2022.targets" Condition="Exists('packages\BuildWebCompiler2022.1.14.10\build\BuildWebCompiler2022.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>del "$(ProjectDir)Content\output\*.css" /q</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
