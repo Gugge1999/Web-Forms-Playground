@@ -179,6 +179,8 @@
       <DependentUpon>compilerconfig.json</DependentUpon>
     </None>
     <Content Include="Content\scss\utilities\_index.scss" />
+    <Content Include="package-lock.json" />
+    <Content Include="package.json" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -307,17 +309,18 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('packages\BuildWebCompiler2022.1.14.10\build\BuildWebCompiler2022.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\BuildWebCompiler2022.1.14.10\build\BuildWebCompiler2022.targets'))" />
   </Target>
-  <Import Project="packages\BuildWebCompiler2022.1.14.10\build\BuildWebCompiler2022.targets" Condition="Exists('packages\BuildWebCompiler2022.1.14.10\build\BuildWebCompiler2022.targets')" />
   <PropertyGroup>
-    <PreBuildEvent>del "$(ProjectDir)Content\output\*.css" /q</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
+       Other similar extension points exist, see Microsoft.Common.targets. -->
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="npm run build-css" />
   </Target>
-  <Target Name="AfterBuild">
-  </Target>
+  <!-- 
+    <Target Name="AfterBuild">
+    </Target>
   -->
 </Project>

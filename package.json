@@ -1,0 +1,12 @@
+{
+  "name": "compile-scss-on-build",
+  "version": "1.0.0",
+  "description": "Compile scss on build",
+  "scripts": {
+    "build-css": "sass --style=compressed --no-source-map Content/scss/main.scss Content/output/main.css"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "sass": "^1.58.3"
+  }
+}
